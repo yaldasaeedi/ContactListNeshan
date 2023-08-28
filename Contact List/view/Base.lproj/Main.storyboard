@@ -250,6 +250,7 @@
                                     <constraint firstItem="bQ0-nF-FJQ" firstAttribute="width" secondItem="Kfl-Sn-pwj" secondAttribute="width" id="Tba-3l-Rhj"/>
                                     <constraint firstItem="wjy-pD-ZMc" firstAttribute="width" secondItem="Kfl-Sn-pwj" secondAttribute="width" id="V6L-7Y-dfG"/>
                                     <constraint firstItem="Kfl-Sn-pwj" firstAttribute="width" secondItem="Mqr-Z6-HBs" secondAttribute="width" id="fEv-xH-Sg7"/>
+                                    <constraint firstItem="smL-YQ-nIq" firstAttribute="top" secondItem="PcU-MX-1in" secondAttribute="bottom" constant="30" id="mPI-wg-rIZ"/>
                                     <constraint firstItem="Bkb-4R-og6" firstAttribute="height" secondItem="eKd-Fi-fus" secondAttribute="height" multiplier="0.3" id="ukS-Sf-u2H"/>
                                 </constraints>
                             </stackView>
