@@ -99,10 +99,10 @@
 		E09E012C2A9C868B00183843 /* Contact List */ = {
 			isa = PBXGroup;
 			children = (
+				E0A055FB2A9D362300C228EF /* view */,
 				E09E012D2A9C868B00183843 /* AppDelegate.swift */,
 				E09E012F2A9C868B00183843 /* SceneDelegate.swift */,
 				E09E01312A9C868B00183843 /* ViewController.swift */,
-				E09E01332A9C868B00183843 /* Main.storyboard */,
 				E09E01362A9C868C00183843 /* Assets.xcassets */,
 				E09E01382A9C868C00183843 /* LaunchScreen.storyboard */,
 				E09E013B2A9C868C00183843 /* Info.plist */,
@@ -125,6 +125,14 @@
 				E09E01502A9C868C00183843 /* Contact_ListUITestsLaunchTests.swift */,
 			);
 			path = "Contact ListUITests";
+			sourceTree = "<group>";
+		};
+		E0A055FB2A9D362300C228EF /* view */ = {
+			isa = PBXGroup;
+			children = (
+				E09E01332A9C868B00183843 /* Main.storyboard */,
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
