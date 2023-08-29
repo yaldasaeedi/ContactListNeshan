@@ -10,13 +10,15 @@ struct UserInformation{
     
     private var name : String
     private var number : Int64
+    private var email : String
     private var image : UIImage
     private var birthday: Date
     private var note : String
     
-    init(name: String, number: Int64, image: UIImage, birthday: Date, note: String) {
+    init(name: String, number: Int64,email : String, image: UIImage, birthday: Date, note: String) {
         self.name = name
         self.number = number
+        self.email = email
         self.image = image
         self.birthday = birthday
         self.note = note

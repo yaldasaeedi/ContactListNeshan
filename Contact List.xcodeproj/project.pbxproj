@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		E05C2FF32A9DD2710063F7DC /* ViewControllerForAddUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05C2FF22A9DD2710063F7DC /* ViewControllerForAddUser.swift */; };
 		E05C2FF52A9DD9CC0063F7DC /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05C2FF42A9DD9CC0063F7DC /* MainModel.swift */; };
-		E05C2FF72A9DD9F70063F7DC /* ModelForAddingUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05C2FF62A9DD9F70063F7DC /* ModelForAddingUser.swift */; };
 		E09E012E2A9C868B00183843 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09E012D2A9C868B00183843 /* AppDelegate.swift */; };
 		E09E01302A9C868B00183843 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09E012F2A9C868B00183843 /* SceneDelegate.swift */; };
 		E09E01322A9C868B00183843 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09E01312A9C868B00183843 /* ViewController.swift */; };
@@ -41,7 +40,6 @@
 /* Begin PBXFileReference section */
 		E05C2FF22A9DD2710063F7DC /* ViewControllerForAddUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerForAddUser.swift; sourceTree = "<group>"; };
 		E05C2FF42A9DD9CC0063F7DC /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
-		E05C2FF62A9DD9F70063F7DC /* ModelForAddingUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelForAddingUser.swift; sourceTree = "<group>"; };
 		E09E012A2A9C868B00183843 /* Contact List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Contact List.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E09E012D2A9C868B00183843 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E09E012F2A9C868B00183843 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -109,7 +107,6 @@
 				E09E01312A9C868B00183843 /* ViewController.swift */,
 				E05C2FF22A9DD2710063F7DC /* ViewControllerForAddUser.swift */,
 				E05C2FF42A9DD9CC0063F7DC /* MainModel.swift */,
-				E05C2FF62A9DD9F70063F7DC /* ModelForAddingUser.swift */,
 				E09E012D2A9C868B00183843 /* AppDelegate.swift */,
 				E09E012F2A9C868B00183843 /* SceneDelegate.swift */,
 				E09E01362A9C868C00183843 /* Assets.xcassets */,
@@ -276,7 +273,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E09E01322A9C868B00183843 /* ViewController.swift in Sources */,
-				E05C2FF72A9DD9F70063F7DC /* ModelForAddingUser.swift in Sources */,
 				E09E012E2A9C868B00183843 /* AppDelegate.swift in Sources */,
 				E09E01302A9C868B00183843 /* SceneDelegate.swift in Sources */,
 				E05C2FF52A9DD9CC0063F7DC /* MainModel.swift in Sources */,

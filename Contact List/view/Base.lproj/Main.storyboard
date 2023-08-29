@@ -241,7 +241,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="1gw-9U-5gZ">
                                         <rect key="frame" x="0.0" y="516.66666666666663" width="373" height="50"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ugC-2M-3aO">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ugC-2M-3aO">
                                                 <rect key="frame" x="0.0" y="0.0" width="62" height="50"/>
                                                 <color key="backgroundColor" systemColor="quaternaryLabelColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -253,6 +253,9 @@
                                                 <color key="backgroundColor" systemColor="placeholderTextColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="addingContactNote:" destination="UFa-BD-jDW" eventType="editingDidEnd" id="XYT-Sr-rLd"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -300,6 +303,7 @@
                         <outlet property="contactBirthdayDP" destination="Jek-a1-2no" id="YyW-xP-KlF"/>
                         <outlet property="contactEmailTF" destination="k4g-rK-vsz" id="ZWI-xm-5ju"/>
                         <outlet property="contactNameTF" destination="Kfl-Sn-pwj" id="5wL-tU-TQO"/>
+                        <outlet property="contactNoteTF" destination="wjy-pD-ZMc" id="AQL-Wc-VPN"/>
                         <outlet property="contactNumderTF" destination="bQ0-nF-FJQ" id="YzM-eJ-ynJ"/>
                         <outlet property="userImageIV" destination="laL-Ye-HBI" id="ErE-7v-acg"/>
                     </connections>
