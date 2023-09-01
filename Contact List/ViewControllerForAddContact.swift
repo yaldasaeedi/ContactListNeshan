@@ -1,5 +1,5 @@
 //
-//  ViewControllerForAddUser.swift
+//  ViewControllerForAddContact.swift
 //  Contact List
 //
 //  Created by Helen Besharatian on 6/7/1402 AP.
@@ -8,18 +8,18 @@
 import UIKit
 
 
-class ViewControllerForAddUser: UIViewController {
+class ViewControllerForAddContact: UIViewController {
 
-    weak var delegate: ViewControllerForAddUserDelegate?
+    weak var delegate: ViewControllerForAddContactDelegate?
     
-    @IBOutlet weak var userImageIV: UIImageView!
+    @IBOutlet weak var contactImageIV: UIImageView!
     @IBOutlet weak var contactNameTF: UITextField!
     @IBOutlet weak var contactNumderTF: UITextField!
     @IBOutlet weak var contactEmailTF: UITextField!
     @IBOutlet weak var contactBirthdayDP: UIDatePicker!
     @IBOutlet weak var contactNoteTF: UITextField!
     
-    private var newUser : UserInformation?
+    private var newContact : ContactInformation?
     private var newName : String?
     private var newNumber : Int64?
     private var newEmail : String?
@@ -31,8 +31,8 @@ class ViewControllerForAddUser: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        userImageIV.image = UIImage(named: "image")
-        newImage = userImageIV.image
+        contactImageIV.image = UIImage(named: "image")
+        newContact?.image = contactImageIV.image!
         
         // Set a default birthday to a specific date
         let calendar = Calendar.current
@@ -48,41 +48,41 @@ class ViewControllerForAddUser: UIViewController {
     
     @IBAction func addingContactName(_ sender: Any) {
         
-        newName = contactNameTF.text
+        newContact?.name = contactNameTF.text!
     }
     
     @IBAction func addingContactNumber(_ sender: Any) {
         
-        newNumber = Int64(contactNumderTF.text!)
+        newContact?.number = Int64(contactNumderTF.text!)!
     }
     
     @IBAction func addingContactEmail(_ sender: Any) {
         
-        newEmail = contactEmailTF.text
+        newContact?.email = contactEmailTF.text!
     }
     
     @IBAction func addingContactBirthdat(_ sender: Any){
         
-        newBirthday = contactBirthdayDP.date
+        newContact?.birthday = contactBirthdayDP.date
     }
     
     @IBAction func addingContactNote(_ sender: Any) {
         
-        newNote = contactNoteTF.text
+        newContact?.note = contactNoteTF.text!
     }
     
     @IBAction func contactInfoAdded(_ sender: Any) {
-        guard let NewUser = newUser else {
-                    print("Error: newUser is nil")
+        guard let unwrappedNewContact = newContact else {
+                    print("Error: newContact is nil")
                     return
         }
-//        newUser?.addContact(newName: newName ?? "no name",
+//        newContact?.addContact(newName: newName ?? "no name",
 //                            newNumber: newNumber ?? 0 ,
 //                            newEmail: newEmail ?? "no email",
 //                            newImage: newImage!,
 //                            newBirthday: newBirthday!,
 //                            newNote: newNote ?? "no note")
-        delegate?.didAddNewContact(self, didFinish: newUser!)
+        delegate?.didAddNewContact(self, didFinish: unwrappedNewContact)
     }
     
     

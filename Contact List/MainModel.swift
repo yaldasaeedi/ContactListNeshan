@@ -6,7 +6,7 @@
 //
 import UIKit
 
-struct UserInformation{
+struct ContactInformation{
     
     var name : String
     var number : Int64
@@ -25,11 +25,11 @@ struct UserInformation{
     }
 }
 
-class UserManeger{
+class ContactsManeger{
     
-    var ContactsArrey : [UserInformation] = []
+    var ContactsArrey : [ContactInformation] = []
     
-    func getContactsArrey() -> [UserInformation] {
+    func getContactsArrey() -> [ContactInformation] {
         return self.ContactsArrey
     }
     
@@ -43,20 +43,19 @@ class UserManeger{
     }
     
     func addContact(newName : String, newNumber : Int64, newEmail: String, newImage : UIImage, newBirthday : Date, newNote : String){
-        var newContact = UserInformation(name: newName, number: newNumber, email: newEmail, image: newImage, birthday: newBirthday, note: newNote)
-        ContactsArrey.append(newContact)
-        
+        let newContact = ContactInformation(name: newName, number: newNumber, email: newEmail, image: newImage, birthday: newBirthday, note: newNote)
+            addNewContactToList(new: newContact)
     }
-    func addNewContact(new : UserInformation){
+    func addNewContactToList(new : ContactInformation){
         
         ContactsArrey.append(new)
         
     }
-    func deleteUser(){
+    func deleteContact(){
         
         
     }
-    func editUser(){
+    func editContact(){
         
         
     }
