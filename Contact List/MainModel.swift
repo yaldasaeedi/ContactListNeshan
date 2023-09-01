@@ -8,12 +8,12 @@ import UIKit
 
 struct UserInformation{
     
-    private var name : String
-    private var number : Int64
-    private var email : String
-    private var image : UIImage
-    private var birthday: Date
-    private var note : String
+    var name : String
+    var number : Int64
+    var email : String
+    var image : UIImage
+    var birthday: Date
+    var note : String
     
     init(name: String, number: Int64,email : String, image: UIImage, birthday: Date, note: String) {
         self.name = name
@@ -27,10 +27,29 @@ struct UserInformation{
 
 class UserManeger{
     
-    private var userArrey : [UserInformation] = []
+    var ContactsArrey : [UserInformation] = []
     
-    func addUser(){
+    func getContactsArrey() -> [UserInformation] {
+        return self.ContactsArrey
+    }
+    
+    func getContactsPhone() -> [Int64]{
+        return ContactsArrey.map { $0.number }
         
+    }
+    
+    func getContactsName() -> [String]{
+        return ContactsArrey.map{ $0.name }
+    }
+    
+    func addContact(newName : String, newNumber : Int64, newEmail: String, newImage : UIImage, newBirthday : Date, newNote : String){
+        var newContact = UserInformation(name: newName, number: newNumber, email: newEmail, image: newImage, birthday: newBirthday, note: newNote)
+        ContactsArrey.append(newContact)
+        
+    }
+    func addNewContact(new : UserInformation){
+        
+        ContactsArrey.append(new)
         
     }
     func deleteUser(){
