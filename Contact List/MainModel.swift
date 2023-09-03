@@ -62,7 +62,7 @@ class ContactsManager {
     private let userDefaults = UserDefaults.standard
     private let contactsKey = "Contacts"
     
-    private func syncWithDatabase(){
+    func syncWithDatabase(){
         
         ContactsManager.contactsArray = fetchContacts()
     }
