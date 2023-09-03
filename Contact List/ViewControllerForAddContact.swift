@@ -7,10 +7,8 @@
 
 import UIKit
 
-
 class ViewControllerForAddContact: UIViewController {
 
-    weak var delegate: ViewControllerForAddContactDelegate?
     
     @IBOutlet weak var contactImageIV: UIImageView!
     @IBOutlet weak var contactNameTF: UITextField!
@@ -19,7 +17,9 @@ class ViewControllerForAddContact: UIViewController {
     @IBOutlet weak var contactBirthdayDP: UIDatePicker!
     @IBOutlet weak var contactNoteTF: UITextField!
     
-    private var newContact : ContactInformation?
+    var contactsModel = ContactsManager()
+    var contact : ContactInformation?
+
     private var newName : String?
     private var newNumber : Int64?
     private var newEmail : String?
@@ -27,14 +27,82 @@ class ViewControllerForAddContact: UIViewController {
     private var newBirthday: Date?
     private var newNote : String?
     
-    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+    }
+    
+    @IBAction func addingContactPhoto(_ sender: Any) {
         
-        contactImageIV.image = UIImage(named: "image")
-        newContact?.image = contactImageIV.image!
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .photoLibrary
+        present(imagePicker, animated: true, completion: nil)
         
-        // Set a default birthday to a specific date
+    }
+    
+    @IBAction func addingContactName(_ sender: Any) {
+        
+        guard let unwrappedName = contactNameTF.text else{
+            
+            print("nill name")
+            return
+        }
+        newName = unwrappedName
+    }
+    
+    @IBAction func addingContactNumber(_ sender: Any) {
+        
+        guard let unwrappedNumber = Int64(contactNumderTF.text!) else{
+            
+            print("nill number")
+            return
+        }
+        newNumber = unwrappedNumber
+    }
+    
+    @IBAction func addingContactEmail(_ sender: Any) {
+        
+        guard let unwrappedEmail = contactEmailTF.text else{
+            
+            print("nill email")
+            return
+        }
+        newEmail = unwrappedEmail
+    }
+    
+    @IBAction func addingContactBirthdat(_ sender: UIDatePicker){
+
+        newBirthday = sender.date
+    }
+    
+    @IBAction func addingContactNote(_ sender: Any) {
+        
+        guard let unwrappedNote = contactNoteTF.text else{
+            
+            print("nill Note")
+            return
+        }
+        newNote = unwrappedNote
+    }
+    
+    @IBAction func contactInfoAdded(_ sender: Any) {
+        
+        setDefaultImageAndDate()
+        contactsModel.addContact(newName: newName ?? "no name",
+                                 newNumber: newNumber ?? 0 ,
+                                 newEmail: newEmail ?? "no email",
+                                 newImage: (newImage?.jpegData(compressionQuality: 0.8))!,
+                                 newBirthday: newBirthday!,
+                                 newNote: newNote ?? "no note")
+        navigationController?.popViewController(animated: true)
+    }
+    
+    private func setDefaultImageAndDate(){
+        
+        contactImageIV.image = UIImage(named: "Image")
+        newImage = contactImageIV.image!
+        
         let calendar = Calendar.current
         var dateComponents = DateComponents()
         dateComponents.year = 1990
@@ -42,49 +110,36 @@ class ViewControllerForAddContact: UIViewController {
         dateComponents.day = 1
         newBirthday = calendar.date(from: dateComponents)
         
-        // Set the default date on the date picker
         contactBirthdayDP.date = newBirthday ?? Date()
     }
     
-    @IBAction func addingContactName(_ sender: Any) {
+    private func isEditing(){
+        //
+        //        contactImageIV.image = contact?.getContactImage()
+        //        contactNameTF.text = contact?.getContactName()
+        //        contactNumderTF.text = contact?.getContactPhone().description
+        //        contactEmailTF.text = contact?.getContactEmail()
+        //        contactBirthdayDP.date = (contact?.getContactBirthday())!
+        //        contactNoteTF.text = contact?.getContactNote()
+
+    }
+}
+    
+extension ViewControllerForAddContact : UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
-        newContact?.name = contactNameTF.text!
+            if let pickedImage = info[.originalImage] as? UIImage {
+                
+                contactImageIV.image = pickedImage
+                newImage = pickedImage
+                
+            }else{
+                
+                print("image is nill")
+            }
+
+        dismiss(animated: true, completion: nil)
     }
-    
-    @IBAction func addingContactNumber(_ sender: Any) {
-        
-        newContact?.number = Int64(contactNumderTF.text!)!
-    }
-    
-    @IBAction func addingContactEmail(_ sender: Any) {
-        
-        newContact?.email = contactEmailTF.text!
-    }
-    
-    @IBAction func addingContactBirthdat(_ sender: Any){
-        
-        newContact?.birthday = contactBirthdayDP.date
-    }
-    
-    @IBAction func addingContactNote(_ sender: Any) {
-        
-        newContact?.note = contactNoteTF.text!
-    }
-    
-    @IBAction func contactInfoAdded(_ sender: Any) {
-        guard let unwrappedNewContact = newContact else {
-                    print("Error: newContact is nil")
-                    return
-        }
-//        newContact?.addContact(newName: newName ?? "no name",
-//                            newNumber: newNumber ?? 0 ,
-//                            newEmail: newEmail ?? "no email",
-//                            newImage: newImage!,
-//                            newBirthday: newBirthday!,
-//                            newNote: newNote ?? "no note")
-        delegate?.didAddNewContact(self, didFinish: unwrappedNewContact)
-    }
-    
-    
 }
 
