@@ -39,10 +39,10 @@ class ViewController: UIViewController {
             if let indexPath = sender as? IndexPath {
                 
                 let selectedContact = contactsModel.getContactsArray()[indexPath.row]
-
                 if let destinationVC = segue.destination as? ViewControllerForAddContact {
-                    
+                    destinationVC.contactViewMode = .viewAddEdit
                     destinationVC.contact = selectedContact
+                    destinationVC.contactIndexPath = indexPath
                 }
             }
         }

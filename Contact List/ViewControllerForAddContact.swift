@@ -7,6 +7,16 @@
 
 import UIKit
 
+enum ContactViewMode {
+    case viewAddEdit
+    case add
+}
+
+protocol ContactScreenDelegate: AnyObject {
+    
+    var contactViewMode: ContactViewMode { get set }
+}
+
 class ViewControllerForAddContact: UIViewController {
 
     
@@ -19,6 +29,8 @@ class ViewControllerForAddContact: UIViewController {
     
     var contactsModel = ContactsManager()
     var contact : ContactInformation?
+    var contactIndexPath : IndexPath?
+    var contactViewMode: ContactViewMode = .add
 
     private var newName : String?
     private var newNumber : Int64?
@@ -30,14 +42,21 @@ class ViewControllerForAddContact: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        if contactViewMode == .viewAddEdit{
+            isEditing()
+        }
     }
     
     @IBAction func addingContactPhoto(_ sender: Any) {
-        
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .photoLibrary
-        present(imagePicker, animated: true, completion: nil)
+        if contactViewMode == .viewAddEdit{
+            isEditing()
+        }else{
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = .photoLibrary
+            present(imagePicker, animated: true, completion: nil)
+        }
         
     }
     
@@ -87,15 +106,19 @@ class ViewControllerForAddContact: UIViewController {
     }
     
     @IBAction func contactInfoAdded(_ sender: Any) {
-        
-        setDefaultImageAndDate()
-        contactsModel.addContact(newName: newName ?? "no name",
-                                 newNumber: newNumber ?? 0 ,
-                                 newEmail: newEmail ?? "no email",
-                                 newImage: (newImage?.jpegData(compressionQuality: 0.8))!,
-                                 newBirthday: newBirthday!,
-                                 newNote: newNote ?? "no note")
-        navigationController?.popViewController(animated: true)
+        if contactViewMode == .viewAddEdit{
+            
+            contactsModel.editContact(indexPath: contactIndexPath!)
+        }else{
+            setDefaultImageAndDate()
+            contactsModel.addContact(newName: newName ?? "no name",
+                                     newNumber: newNumber ?? 0 ,
+                                     newEmail: newEmail ?? "no email",
+                                     newImage: (newImage?.jpegData(compressionQuality: 0.8))!,
+                                     newBirthday: newBirthday!,
+                                     newNote: newNote ?? "no note")
+            navigationController?.popViewController(animated: true)
+        }
     }
     
     private func setDefaultImageAndDate(){
@@ -114,13 +137,20 @@ class ViewControllerForAddContact: UIViewController {
     }
     
     private func isEditing(){
-        //
-        //        contactImageIV.image = contact?.getContactImage()
-        //        contactNameTF.text = contact?.getContactName()
-        //        contactNumderTF.text = contact?.getContactPhone().description
-        //        contactEmailTF.text = contact?.getContactEmail()
-        //        contactBirthdayDP.date = (contact?.getContactBirthday())!
-        //        contactNoteTF.text = contact?.getContactNote()
+        
+        contactImageIV.image = UIImage(data : (contact?.getContactImage())!)
+        contactNameTF.text = contact?.getContactName()
+        contactNumderTF.text = contact?.getContactPhone().description
+        contactEmailTF.text = contact?.getContactEmail()
+        contactBirthdayDP.date = (contact?.getContactBirthday())!
+        contactNoteTF.text = contact?.getContactNote()
+        
+        newImage = contactImageIV.image
+        newName = contactNameTF.text
+        newNumber = Int64(contactNumderTF.text!)
+        newEmail = contactEmailTF.text
+        newBirthday = contactBirthdayDP.date
+        newNote = contactNoteTF.text
 
     }
 }

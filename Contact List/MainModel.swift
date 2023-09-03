@@ -4,6 +4,10 @@
 //
 //  Created by Helen Besharatian on 6/7/1402 AP.
 //
+
+
+
+// set bayad bezaram va to edit name inaro begiram
 import UIKit
 
 struct ContactInformation : Decodable, Encodable{
@@ -16,6 +20,7 @@ struct ContactInformation : Decodable, Encodable{
     private var note : String
     
     init(name: String, number: Int64,email : String, image: Data, birthday: Date, note: String) {
+
         self.name = name
         self.number = number
         self.email = email
@@ -64,7 +69,7 @@ class ContactsManager {
     
     func syncWithDatabase(){
         
-        ContactsManager.contactsArray = fetchContacts()
+        ContactsManager.contactsArray = fetchContactsFromUserDefaults()
     }
     
     func getContactsArray() -> [ContactInformation] {
@@ -88,7 +93,7 @@ class ContactsManager {
                     newImage : Data,
                     newBirthday : Date,
                     newNote : String){
-        ContactsManager.contactsArray = fetchContacts()
+        ContactsManager.contactsArray = fetchContactsFromUserDefaults()
         let newContact = ContactInformation(name: newName,
                                             number: newNumber,
                                             email: newEmail,
@@ -99,7 +104,7 @@ class ContactsManager {
     }
     private func addNewContactToList(new : ContactInformation){
         
-        saveContact(new)
+        saveContactToUserDefaults(new)
         syncWithDatabase()
     }
     
@@ -110,30 +115,31 @@ class ContactsManager {
         
     }
     
-    func editContact(){
+    func editContact(indexPath : IndexPath){
+        let selectedContact = getContactsArray()[indexPath.row]
         
         
     }
     
-    func saveContact(_ contact: ContactInformation) {
+    func saveContactToUserDefaults(_ contact: ContactInformation) {
         
-        var savedContacts = fetchContacts()
-        savedContacts.append(contact)
+//        var savedContacts = fetchContacts()
+        ContactsManager.contactsArray.append(contact)
         
         do {
             
             let encoder = JSONEncoder()
-            let encodedData = try encoder.encode(savedContacts)
-            UserDefaults.standard.set(encodedData, forKey: contactsKey)
+            let encodedData = try encoder.encode(ContactsManager.contactsArray)
+            userDefaults.set(encodedData, forKey: contactsKey)
         } catch {
             
             print("Error occurred while encoding data: \(error)")
         }
     }
 
-    func fetchContacts() -> [ContactInformation] {
+    func fetchContactsFromUserDefaults() -> [ContactInformation] {
         
-        guard let encodedData = UserDefaults.standard.data(forKey: contactsKey) else {
+        guard let encodedData = userDefaults.data(forKey: contactsKey) else {
             
             return []
         }
@@ -155,7 +161,7 @@ class ContactsManager {
     
     func removeContact(at indexPath: IndexPath) {
         
-        var savedContacts = fetchContacts()
+        var savedContacts = fetchContactsFromUserDefaults()
         savedContacts.remove(at: indexPath.row)
         
         do {
