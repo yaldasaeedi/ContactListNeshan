@@ -7,7 +7,6 @@
 
 
 
-// set bayad bezaram va to edit name inaro begiram
 import UIKit
 
 struct ContactInformation : Decodable, Encodable{
@@ -34,6 +33,7 @@ struct ContactInformation : Decodable, Encodable{
         return number
         
     }
+    
     func getContactName() -> String{
         
         return name
@@ -49,6 +49,7 @@ struct ContactInformation : Decodable, Encodable{
         return email
         
     }
+    
     func getContactBirthday() -> Date{
         
         return birthday
@@ -110,20 +111,20 @@ class ContactsManager {
     
     func deleteContact(indexPath : IndexPath){
         
-        removeContact(at: indexPath)
+        deleteContactFromUserDefaults(at: indexPath)
         syncWithDatabase()
         
     }
     
-    func editContact(indexPath : IndexPath){
-        let selectedContact = getContactsArray()[indexPath.row]
-        
-        
+    func editContact(editedContact : ContactInformation, indexPath : IndexPath){
+
+        editContactInUserDefaults(editedContact, at : indexPath)
+        syncWithDatabase()
+
     }
     
-    func saveContactToUserDefaults(_ contact: ContactInformation) {
+    private func saveContactToUserDefaults(_ contact: ContactInformation) {
         
-//        var savedContacts = fetchContacts()
         ContactsManager.contactsArray.append(contact)
         
         do {
@@ -137,7 +138,7 @@ class ContactsManager {
         }
     }
 
-    func fetchContactsFromUserDefaults() -> [ContactInformation] {
+    private func fetchContactsFromUserDefaults() -> [ContactInformation] {
         
         guard let encodedData = userDefaults.data(forKey: contactsKey) else {
             
@@ -159,7 +160,7 @@ class ContactsManager {
     
     }
     
-    func removeContact(at indexPath: IndexPath) {
+    private func deleteContactFromUserDefaults(at indexPath: IndexPath) {
         
         var savedContacts = fetchContactsFromUserDefaults()
         savedContacts.remove(at: indexPath.row)
@@ -168,9 +169,21 @@ class ContactsManager {
             
             let encoder = JSONEncoder()
             let encodedData = try encoder.encode(savedContacts)
-            UserDefaults.standard.set(encodedData, forKey: contactsKey)
+            userDefaults.set(encodedData, forKey: contactsKey)
         } catch {
             
+            print("Error occurred while encoding data: \(error)")
+        }
+    }
+    private func editContactInUserDefaults(_ updatedContact: ContactInformation, at indexPath: IndexPath) {
+        var savedContacts = fetchContactsFromUserDefaults()
+        savedContacts[indexPath.row] = updatedContact
+        
+        do {
+            let encoder = JSONEncoder()
+            let encodedData = try encoder.encode(savedContacts)
+            userDefaults.set(encodedData, forKey: contactsKey)
+        } catch {
             print("Error occurred while encoding data: \(error)")
         }
     }

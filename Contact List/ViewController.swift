@@ -9,7 +9,6 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var searchForContactSB: UISearchBar!
     @IBOutlet weak var contactTableTV: UITableView!
     
     var contactsModel = ContactsManager()
@@ -37,12 +36,13 @@ class ViewController: UIViewController {
         if segue.identifier == "ShowContactDetailSegue" {
             
             if let indexPath = sender as? IndexPath {
-                
+
                 let selectedContact = contactsModel.getContactsArray()[indexPath.row]
                 if let destinationVC = segue.destination as? ViewControllerForAddContact {
+
                     destinationVC.contactViewMode = .viewAddEdit
-                    destinationVC.contact = selectedContact
-                    destinationVC.contactIndexPath = indexPath
+                    destinationVC.contactForEdit = selectedContact
+                    destinationVC.editingContactIndexPath = indexPath
                 }
             }
         }

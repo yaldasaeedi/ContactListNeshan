@@ -28,8 +28,8 @@ class ViewControllerForAddContact: UIViewController {
     @IBOutlet weak var contactNoteTF: UITextField!
     
     var contactsModel = ContactsManager()
-    var contact : ContactInformation?
-    var contactIndexPath : IndexPath?
+    var contactForEdit : ContactInformation?
+    var editingContactIndexPath : IndexPath?
     var contactViewMode: ContactViewMode = .add
 
     private var newName : String?
@@ -44,19 +44,20 @@ class ViewControllerForAddContact: UIViewController {
         super.viewDidLoad()
         
         if contactViewMode == .viewAddEdit{
+            
             isEditing()
+        }else{
+            
+            setDefaultImageAndDate()
         }
     }
     
     @IBAction func addingContactPhoto(_ sender: Any) {
-        if contactViewMode == .viewAddEdit{
-            isEditing()
-        }else{
+        
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
             imagePicker.sourceType = .photoLibrary
             present(imagePicker, animated: true, completion: nil)
-        }
         
     }
     
@@ -67,6 +68,7 @@ class ViewControllerForAddContact: UIViewController {
             print("nill name")
             return
         }
+        print("in name")
         newName = unwrappedName
     }
     
@@ -107,10 +109,18 @@ class ViewControllerForAddContact: UIViewController {
     
     @IBAction func contactInfoAdded(_ sender: Any) {
         if contactViewMode == .viewAddEdit{
-            
-            contactsModel.editContact(indexPath: contactIndexPath!)
+
+            let editingContact = ContactInformation(name:  newName!,
+                                                    number: newNumber!,
+                                                    email: newEmail!,
+                                                    image: (newImage?.jpegData(compressionQuality: 0.8))!,
+                                                    birthday: newBirthday!,
+                                                    note: newNote!)
+            contactsModel.editContact(editedContact: editingContact, indexPath: editingContactIndexPath!)
+            navigationController?.popViewController(animated: true)
+
         }else{
-            setDefaultImageAndDate()
+
             contactsModel.addContact(newName: newName ?? "no name",
                                      newNumber: newNumber ?? 0 ,
                                      newEmail: newEmail ?? "no email",
@@ -138,19 +148,19 @@ class ViewControllerForAddContact: UIViewController {
     
     private func isEditing(){
         
-        contactImageIV.image = UIImage(data : (contact?.getContactImage())!)
-        contactNameTF.text = contact?.getContactName()
-        contactNumderTF.text = contact?.getContactPhone().description
-        contactEmailTF.text = contact?.getContactEmail()
-        contactBirthdayDP.date = (contact?.getContactBirthday())!
-        contactNoteTF.text = contact?.getContactNote()
-        
-        newImage = contactImageIV.image
-        newName = contactNameTF.text
-        newNumber = Int64(contactNumderTF.text!)
-        newEmail = contactEmailTF.text
-        newBirthday = contactBirthdayDP.date
-        newNote = contactNoteTF.text
+        contactImageIV.image = UIImage(data : (contactForEdit?.getContactImage())!)
+        contactNameTF.text = contactForEdit?.getContactName()
+        contactNumderTF.text = contactForEdit?.getContactPhone().description
+        contactEmailTF.text = contactForEdit?.getContactEmail()
+        contactBirthdayDP.date = (contactForEdit?.getContactBirthday())!
+        contactNoteTF.text = contactForEdit?.getContactNote()
+
+        newImage = UIImage(data : (contactForEdit?.getContactImage())!)
+        newName = contactForEdit?.getContactName()
+        newNumber = contactForEdit?.getContactPhone()
+        newEmail = contactForEdit?.getContactEmail()
+        newBirthday = (contactForEdit?.getContactBirthday())!
+        newNote = contactForEdit?.getContactNote()
 
     }
 }
