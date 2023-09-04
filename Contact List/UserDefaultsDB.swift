@@ -39,6 +39,18 @@ class UserDefaultsDB: ContactStorage {
         }
     }
     
+    func theLastSave(){
+        
+        var savedContacts = fetchContacts()
+        do {
+            let encoder = JSONEncoder()
+            let encodedData = try encoder.encode(savedContacts)
+            userDefaults.set(encodedData, forKey: contactsKey)
+        } catch {
+            print("Error occurred while encoding data: \(error)")
+        }
+    }
+    
     func deleteContact(at indexPath: IndexPath) {
         var savedContacts = fetchContacts()
         savedContacts.remove(at: indexPath.row)
