@@ -65,7 +65,7 @@
                                         <color key="sectionIndexBackgroundColor" systemColor="placeholderTextColor"/>
                                         <color key="sectionIndexTrackingBackgroundColor" systemColor="secondarySystemFillColor"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="contactCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="hWd-Td-08f" detailTextLabel="rfe-iN-oXo" rowHeight="96" style="IBUITableViewCellStyleSubtitle" id="VHV-32-IuG">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="contactCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="hWd-Td-08f" detailTextLabel="rfe-iN-oXo" rowHeight="96" style="IBUITableViewCellStyleSubtitle" id="VHV-32-IuG" customClass="CustomTableViewCell" customModule="Contact_List" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="50" width="393" height="96"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VHV-32-IuG" id="Voj-J2-3rB">

@@ -19,7 +19,7 @@ class ViewController: UIViewController {
 
         contactTableTV.delegate = self
         contactTableTV.dataSource = self
-        contactTableTV.register(UITableViewCell.self, forCellReuseIdentifier: "contactCell")
+        contactTableTV.register(CustomTableViewCell.self, forCellReuseIdentifier: "contactCell")
        
         contactTableTV.reloadData()
     }
@@ -64,10 +64,17 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "contactCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "contactCell", for: indexPath) as! CustomTableViewCell
         let contact = contactsModel.getContactsArray()[indexPath.row]
         cell.textLabel?.text = contact.getContactName()
-        cell.imageView?.image = UIImage(data : contact.getContactImage())
+        if let imageView = cell.imageView {
+            let originalImage = UIImage(data : contact.getContactImage())
+            let newSize = CGSize(width: 16.0, height: 16.0)
+            let resizedImage = originalImage?.resizedImage(withSize: newSize)
+            imageView.image = resizedImage
+            
+        }
+        
         
         return cell
     }
@@ -87,3 +94,18 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
 }
 
+
+extension UIImage {
+    func resizedImage(withSize newSize: CGSize) -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
+        defer { UIGraphicsEndImageContext() }
+        
+        self.draw(in: CGRect(origin: .zero, size: newSize))
+        
+        guard let resizedImage = UIGraphicsGetImageFromCurrentImageContext()?.cgImage else {
+            return nil
+        }
+        
+        return UIImage(cgImage: resizedImage)
+    }
+}

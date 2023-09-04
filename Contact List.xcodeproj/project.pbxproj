@@ -18,6 +18,7 @@
 		E09E01452A9C868C00183843 /* Contact_ListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09E01442A9C868C00183843 /* Contact_ListTests.swift */; };
 		E09E014F2A9C868C00183843 /* Contact_ListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09E014E2A9C868C00183843 /* Contact_ListUITests.swift */; };
 		E09E01512A9C868C00183843 /* Contact_ListUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09E01502A9C868C00183843 /* Contact_ListUITestsLaunchTests.swift */; };
+		E0DDE0DC2AA5ABBC009AAE00 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DDE0DB2AA5ABBC009AAE00 /* CustomTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		E09E014A2A9C868C00183843 /* Contact ListUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Contact ListUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E09E014E2A9C868C00183843 /* Contact_ListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact_ListUITests.swift; sourceTree = "<group>"; };
 		E09E01502A9C868C00183843 /* Contact_ListUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact_ListUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E0DDE0DB2AA5ABBC009AAE00 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				E09E01362A9C868C00183843 /* Assets.xcassets */,
 				E09E01382A9C868C00183843 /* LaunchScreen.storyboard */,
 				E09E013B2A9C868C00183843 /* Info.plist */,
+				E0DDE0DB2AA5ABBC009AAE00 /* CustomTableViewCell.swift */,
 			);
 			path = "Contact List";
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0DDE0DC2AA5ABBC009AAE00 /* CustomTableViewCell.swift in Sources */,
 				E09E01322A9C868B00183843 /* ViewController.swift in Sources */,
 				E09E012E2A9C868B00183843 /* AppDelegate.swift in Sources */,
 				E09E01302A9C868B00183843 /* SceneDelegate.swift in Sources */,
