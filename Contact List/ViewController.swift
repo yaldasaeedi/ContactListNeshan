@@ -11,16 +11,13 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var contactTableTV: UITableView!
     
-    var contactsModel = ContactsManager()
+    var contactsModel = ContactsManager(contactStorage: UserDefaultsDB())
 
     override func viewDidLoad() {
         
         super.viewDidLoad()
 
-        contactTableTV.delegate = self
-        contactTableTV.dataSource = self
-        contactTableTV.register(CustomTableViewCell.self, forCellReuseIdentifier: "contactCell")
-       
+        setupTableView()
         contactTableTV.reloadData()
     }
     
@@ -31,22 +28,33 @@ class ViewController: UIViewController {
         
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func viewWillDisappear(_ animated: Bool) {
+        contactsModel.contactStorage.fetchContacts()
         
-        if segue.identifier == "ShowContactDetailSegue" {
-            
-            if let indexPath = sender as? IndexPath {
-
-                let selectedContact = contactsModel.getContactsArray()[indexPath.row]
-                if let destinationVC = segue.destination as? ViewControllerForAddContact {
-
-                    destinationVC.contactViewMode = .viewAddEdit
-                    destinationVC.contactForEdit = selectedContact
-                    destinationVC.editingContactIndexPath = indexPath
-                }
-            }
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowContactDetailSegue",
+            let indexPath = sender as? IndexPath {
+            prepareContactDetailSegue(for: segue, indexPath: indexPath)
         }
     }
+    
+    
+    private func setupTableView() {
+            contactTableTV.delegate = self
+            contactTableTV.dataSource = self
+            contactTableTV.register(CustomTableViewCell.self, forCellReuseIdentifier: "contactCell")
+        }
+        
+    private func prepareContactDetailSegue(for segue: UIStoryboardSegue, indexPath: IndexPath) {
+        let selectedContact = contactsModel.getContactsArray()[indexPath.row]
+        
+        if let destinationVC = segue.destination as? ViewControllerForAddContact {
+            destinationVC.contactViewMode = .viewAddEdit
+            destinationVC.contactForEdit = selectedContact
+            destinationVC.editingContactIndexPath = indexPath
+        }
+        }
 }
 
 
@@ -75,7 +83,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             
         }
         
-        
         return cell
     }
     
@@ -99,13 +106,13 @@ extension UIImage {
     func resizedImage(withSize newSize: CGSize) -> UIImage? {
         UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
         defer { UIGraphicsEndImageContext() }
-        
+
         self.draw(in: CGRect(origin: .zero, size: newSize))
-        
+
         guard let resizedImage = UIGraphicsGetImageFromCurrentImageContext()?.cgImage else {
             return nil
         }
-        
+
         return UIImage(cgImage: resizedImage)
     }
 }

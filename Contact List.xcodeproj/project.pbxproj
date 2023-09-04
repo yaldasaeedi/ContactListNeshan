@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E0176DF82AA67531005E778E /* ContactInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0176DF72AA67531005E778E /* ContactInformation.swift */; };
+		E0176DFA2AA67558005E778E /* UserDefaultsDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0176DF92AA67558005E778E /* UserDefaultsDB.swift */; };
 		E05C2FF32A9DD2710063F7DC /* ViewControllerForAddContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05C2FF22A9DD2710063F7DC /* ViewControllerForAddContact.swift */; };
 		E05C2FF52A9DD9CC0063F7DC /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05C2FF42A9DD9CC0063F7DC /* MainModel.swift */; };
 		E09E012E2A9C868B00183843 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09E012D2A9C868B00183843 /* AppDelegate.swift */; };
@@ -39,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E0176DF72AA67531005E778E /* ContactInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInformation.swift; sourceTree = "<group>"; };
+		E0176DF92AA67558005E778E /* UserDefaultsDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsDB.swift; sourceTree = "<group>"; };
 		E05C2FF22A9DD2710063F7DC /* ViewControllerForAddContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerForAddContact.swift; sourceTree = "<group>"; };
 		E05C2FF42A9DD9CC0063F7DC /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
 		E09E012A2A9C868B00183843 /* Contact List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Contact List.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,6 +113,8 @@
 				E09E01312A9C868B00183843 /* ViewController.swift */,
 				E05C2FF22A9DD2710063F7DC /* ViewControllerForAddContact.swift */,
 				E05C2FF42A9DD9CC0063F7DC /* MainModel.swift */,
+				E0176DF72AA67531005E778E /* ContactInformation.swift */,
+				E0176DF92AA67558005E778E /* UserDefaultsDB.swift */,
 				E09E012D2A9C868B00183843 /* AppDelegate.swift */,
 				E09E012F2A9C868B00183843 /* SceneDelegate.swift */,
 				E09E01362A9C868C00183843 /* Assets.xcassets */,
@@ -279,7 +285,9 @@
 				E09E01322A9C868B00183843 /* ViewController.swift in Sources */,
 				E09E012E2A9C868B00183843 /* AppDelegate.swift in Sources */,
 				E09E01302A9C868B00183843 /* SceneDelegate.swift in Sources */,
+				E0176DFA2AA67558005E778E /* UserDefaultsDB.swift in Sources */,
 				E05C2FF52A9DD9CC0063F7DC /* MainModel.swift in Sources */,
+				E0176DF82AA67531005E778E /* ContactInformation.swift in Sources */,
 				E05C2FF32A9DD2710063F7DC /* ViewControllerForAddContact.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

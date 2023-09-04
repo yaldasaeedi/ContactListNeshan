@@ -12,11 +12,6 @@ enum ContactViewMode {
     case add
 }
 
-protocol ContactScreenDelegate: AnyObject {
-    
-    var contactViewMode: ContactViewMode { get set }
-}
-
 class ViewControllerForAddContact: UIViewController {
 
     
@@ -27,7 +22,7 @@ class ViewControllerForAddContact: UIViewController {
     @IBOutlet weak var contactBirthdayDP: UIDatePicker!
     @IBOutlet weak var contactNoteTF: UITextField!
     
-    var contactsModel = ContactsManager()
+    var contactsModel = ContactsManager(contactStorage: UserDefaultsDB())
     var contactForEdit : ContactInformation?
     var editingContactIndexPath : IndexPath?
     var contactViewMode: ContactViewMode = .add
@@ -68,7 +63,6 @@ class ViewControllerForAddContact: UIViewController {
             print("nill name")
             return
         }
-        print("in name")
         newName = unwrappedName
     }
     
@@ -181,5 +175,9 @@ extension ViewControllerForAddContact : UIImagePickerControllerDelegate, UINavig
 
         dismiss(animated: true, completion: nil)
     }
+}
+protocol ContactScreenDelegate: AnyObject {
+    
+    var contactViewMode: ContactViewMode { get set }
 }
 
