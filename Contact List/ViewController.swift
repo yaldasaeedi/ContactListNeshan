@@ -29,32 +29,39 @@ class ViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        
         contactsModel.contactStorage.fetchContacts()
         
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if segue.identifier == "ShowContactDetailSegue",
             let indexPath = sender as? IndexPath {
+            
             prepareContactDetailSegue(for: segue, indexPath: indexPath)
         }
     }
     
     
     private func setupTableView() {
+        
             contactTableTV.delegate = self
             contactTableTV.dataSource = self
             contactTableTV.register(CustomTableViewCell.self, forCellReuseIdentifier: "contactCell")
         }
         
     private func prepareContactDetailSegue(for segue: UIStoryboardSegue, indexPath: IndexPath) {
+        
         let selectedContact = contactsModel.getContactsArray()[indexPath.row]
         
         if let destinationVC = segue.destination as? ViewControllerForAddContact {
+            
             destinationVC.contactViewMode = .viewAddEdit
             destinationVC.contactForEdit = selectedContact
             destinationVC.editingContactIndexPath = indexPath
         }
-        }
+    }
 }
 
 
@@ -103,7 +110,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
 
 extension UIImage {
+    
     func resizedImage(withSize newSize: CGSize) -> UIImage? {
+        
         UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
         defer { UIGraphicsEndImageContext() }
 

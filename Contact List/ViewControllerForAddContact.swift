@@ -102,6 +102,7 @@ class ViewControllerForAddContact: UIViewController {
     }
     
     @IBAction func contactInfoAdded(_ sender: Any) {
+        
         if contactViewMode == .viewAddEdit{
 
             let editingContact = ContactInformation(name:  newName!,
