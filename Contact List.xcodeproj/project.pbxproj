@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E0176DF82AA67531005E778E /* ContactInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0176DF72AA67531005E778E /* ContactInformation.swift */; };
+		E0176DFA2AA67558005E778E /* UserDefaultsDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0176DF92AA67558005E778E /* UserDefaultsDB.swift */; };
+		E05C2FF32A9DD2710063F7DC /* ViewControllerForAddContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05C2FF22A9DD2710063F7DC /* ViewControllerForAddContact.swift */; };
+		E05C2FF52A9DD9CC0063F7DC /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05C2FF42A9DD9CC0063F7DC /* MainModel.swift */; };
 		E09E012E2A9C868B00183843 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09E012D2A9C868B00183843 /* AppDelegate.swift */; };
 		E09E01302A9C868B00183843 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09E012F2A9C868B00183843 /* SceneDelegate.swift */; };
 		E09E01322A9C868B00183843 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09E01312A9C868B00183843 /* ViewController.swift */; };
@@ -16,6 +20,7 @@
 		E09E01452A9C868C00183843 /* Contact_ListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09E01442A9C868C00183843 /* Contact_ListTests.swift */; };
 		E09E014F2A9C868C00183843 /* Contact_ListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09E014E2A9C868C00183843 /* Contact_ListUITests.swift */; };
 		E09E01512A9C868C00183843 /* Contact_ListUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09E01502A9C868C00183843 /* Contact_ListUITestsLaunchTests.swift */; };
+		E0DDE0DC2AA5ABBC009AAE00 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DDE0DB2AA5ABBC009AAE00 /* CustomTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +41,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E0176DF72AA67531005E778E /* ContactInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInformation.swift; sourceTree = "<group>"; };
+		E0176DF92AA67558005E778E /* UserDefaultsDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsDB.swift; sourceTree = "<group>"; };
+		E05C2FF22A9DD2710063F7DC /* ViewControllerForAddContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerForAddContact.swift; sourceTree = "<group>"; };
+		E05C2FF42A9DD9CC0063F7DC /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
 		E09E012A2A9C868B00183843 /* Contact List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Contact List.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E09E012D2A9C868B00183843 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E09E012F2A9C868B00183843 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +58,7 @@
 		E09E014A2A9C868C00183843 /* Contact ListUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Contact ListUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E09E014E2A9C868C00183843 /* Contact_ListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact_ListUITests.swift; sourceTree = "<group>"; };
 		E09E01502A9C868C00183843 /* Contact_ListUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact_ListUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E0DDE0DB2AA5ABBC009AAE00 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,13 +109,18 @@
 		E09E012C2A9C868B00183843 /* Contact List */ = {
 			isa = PBXGroup;
 			children = (
+				E0A055FB2A9D362300C228EF /* view */,
+				E09E01312A9C868B00183843 /* ViewController.swift */,
+				E05C2FF22A9DD2710063F7DC /* ViewControllerForAddContact.swift */,
+				E05C2FF42A9DD9CC0063F7DC /* MainModel.swift */,
+				E0176DF72AA67531005E778E /* ContactInformation.swift */,
+				E0176DF92AA67558005E778E /* UserDefaultsDB.swift */,
 				E09E012D2A9C868B00183843 /* AppDelegate.swift */,
 				E09E012F2A9C868B00183843 /* SceneDelegate.swift */,
-				E09E01312A9C868B00183843 /* ViewController.swift */,
-				E09E01332A9C868B00183843 /* Main.storyboard */,
 				E09E01362A9C868C00183843 /* Assets.xcassets */,
 				E09E01382A9C868C00183843 /* LaunchScreen.storyboard */,
 				E09E013B2A9C868C00183843 /* Info.plist */,
+				E0DDE0DB2AA5ABBC009AAE00 /* CustomTableViewCell.swift */,
 			);
 			path = "Contact List";
 			sourceTree = "<group>";
@@ -125,6 +140,14 @@
 				E09E01502A9C868C00183843 /* Contact_ListUITestsLaunchTests.swift */,
 			);
 			path = "Contact ListUITests";
+			sourceTree = "<group>";
+		};
+		E0A055FB2A9D362300C228EF /* view */ = {
+			isa = PBXGroup;
+			children = (
+				E09E01332A9C868B00183843 /* Main.storyboard */,
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,9 +281,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0DDE0DC2AA5ABBC009AAE00 /* CustomTableViewCell.swift in Sources */,
 				E09E01322A9C868B00183843 /* ViewController.swift in Sources */,
 				E09E012E2A9C868B00183843 /* AppDelegate.swift in Sources */,
 				E09E01302A9C868B00183843 /* SceneDelegate.swift in Sources */,
+				E0176DFA2AA67558005E778E /* UserDefaultsDB.swift in Sources */,
+				E05C2FF52A9DD9CC0063F7DC /* MainModel.swift in Sources */,
+				E0176DF82AA67531005E778E /* ContactInformation.swift in Sources */,
+				E05C2FF32A9DD2710063F7DC /* ViewControllerForAddContact.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
